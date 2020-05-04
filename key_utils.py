@@ -22,3 +22,11 @@ def public_key_to_address(s):
     ripemd160.update(sha256_hash)
     return utils.base58_check_encode(0, ripemd160.digest())
 
+def key_to_address(s):
+    return public_key_to_address(private_key_to_public_key(s))
+
+
+# Example:
+# private_key = ''.join(['%x' % random.randrange(16) for x in range(0, 64)])
+# private_key_to_wif(private_key)
+# key_to_address(private_key)
